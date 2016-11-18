@@ -5,16 +5,21 @@ from datetime import timedelta
 
 myToken = '075b5de9348beb07fe8fd1c52d59f15c'
 myGit = 'https://github.com/LatrellGaither/Code2040-Challenges'
+data = {'token': myToken}
 
+#Registration
 def register():
     data = {'token': myToken, 'github': myGit}
+    #post request to code2040.org
     request = requests.post("http://challenge.code2040.org/api/register", json=data)
 
+#reverse slicing for reverse_string method
 def reversed(word):
     return word[::-1]
 
+#Stage 1 challenge
 def reverse_string():
-    data = {'token': myToken}
+    
     request = requests.post("http://challenge.code2040.org/api/reverse", json=data)
     word = request.text
     return_data = {'token': myToken, 'string': reversed(word)}
@@ -29,7 +34,6 @@ def find_needle(needle, haystack):
             pos += 1
 
 def haystack():
-    data = {'token': myToken}
     request = requests.post('http://challenge.code2040.org/api/haystack', json=data)
     r_data = request.json()
     needle = r_data['needle']
@@ -47,7 +51,6 @@ def remove_strings(prefix, strings):
     return result
 
 def prefix():
-    data = {'token': myToken}
     request = requests.post('http://challenge.code2040.org/api/prefix', json=data)
     r_data = request.json()
     prefix = r_data['prefix']
@@ -65,7 +68,6 @@ def dating_incriment(datestamp, interval):
     return val
 
 def dating():
-    data = {'token': myToken}
     request = requests.post('http://challenge.code2040.org/api/dating', json=data)
     r_data = request.json()
     datestamp = r_data['datestamp']
